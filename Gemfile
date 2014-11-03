@@ -26,6 +26,10 @@ group :development, :test do
   gem 'guard-bundler'
   gem 'guard-rails'
   gem 'guard-livereload'
+  gem 'rspec-rails'
+  gem 'poltergeist'
+  gem 'launchy'
+  gem 'capybara'
 end
 
 group :production do
