@@ -31,6 +31,9 @@ group :development, :test do
   gem 'poltergeist'
   gem 'launchy'
   gem 'capybara'
+  gem 'factory_girl'
+  gem 'factory_girl_rails'
+
 end
 
 group :production do

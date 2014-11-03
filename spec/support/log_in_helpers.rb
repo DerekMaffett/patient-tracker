@@ -1,0 +1,11 @@
+require 'rails_helper'
+
+def log_in_as(user)
+  user = create(user)
+  visit '/'
+  click_on 'sign in'
+  fill_in 'Email', with: user.email
+  fill_in 'Password',
+    with: (user.role == 'admin' ? 'admin' : 'resident')
+  click_on 'Sign in'
+end
