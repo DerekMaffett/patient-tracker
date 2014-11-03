@@ -10,7 +10,7 @@ FactoryGirl.define do
     confirmed_at Time.now
   end
 
-  factory :admin, class User do
+  factory :admin, class: User do
     name 'Lisa Cuddy'
     role 'Admin'
     email 'lisacuddy@hospital.com'
