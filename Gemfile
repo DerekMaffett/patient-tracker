@@ -13,6 +13,7 @@ gem 'pg', '~> 0.17.1'
 gem 'pundit', '~> 0.2.3'
 gem 'rails', '4.1.6'
 gem 'sass-rails', '~> 4.0.3'
+gem 'stripe', :git => 'https://github.com/stripe/stripe-ruby'
 gem 'turbolinks', '~> 2.2.2'
 gem 'uglifier', '>= 1.3.0'
 
