@@ -4,7 +4,8 @@ ruby '2.1.3'
 gem 'coffee-rails', '~> 4.0.0'
 gem 'devise', '~> 3.2.4'
 gem 'eefgilm'
-gem 'figaro', '>= 1.0.0.rc1'
+# gem 'figaro', '>= 1.0.0.rc1'
+gem 'foreman'
 gem 'jbuilder', '~> 2.0'
 gem 'jquery-rails', '~> 3.1.0'
 gem 'newrelic_rpm', '~> 3.9.0.229'
@@ -22,6 +23,9 @@ end
 group :development, :test do
   gem 'better_errors', '~> 1.1.0'
   gem 'binding_of_caller', '~> 0.7.2'
+  gem 'guard-bundler'
+  gem 'guard-rails'
+  gem 'guard-livereload'
 end
 
 group :production do
