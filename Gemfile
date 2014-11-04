@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 ruby '2.1.3'
-
+gem 'foundation-rails'
 gem 'coffee-rails', '~> 4.0.0'
 gem 'devise', '~> 3.2.4'
 gem 'eefgilm'
