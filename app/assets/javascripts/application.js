@@ -14,6 +14,10 @@
 //= require jquery_ujs
 //= require foundation
 //= require turbolinks
-//= require_tree .
+//= require jquery-mobile-bower/js/jquery.mobile-1.4.2.min
+//= require jquery-ui/jquery-ui.min
+//= require encounters
+//= require sign_up
+//= require ng_patient_tracker
 
 $(function(){ $(document).foundation(); });
