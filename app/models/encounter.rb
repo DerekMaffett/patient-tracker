@@ -1,4 +1,7 @@
 class Encounter < ActiveRecord::Base
+  TYPES = [:adult_inpatient, :adult_ed, :adult_icu,
+    :adult_inpatient_surgery, :pediatric_inpatient, :pediatric_newborn,
+    :pediatric_ed, :continuity_inpatient, :continuity_external]
 
   scope :adult_medicine, ->{ where encounter_type: 'adult_medicine' }
   scope :icu, ->{ where encounter_type: 'icu' }

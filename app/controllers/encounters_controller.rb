@@ -38,13 +38,18 @@ class EncountersController < ApplicationController
   # POST /encounters
   # POST /encounters.json
   def create
-
     total = 0
     begin
       ActiveRecord::Base.transaction do
         encounter_types.each do |type, number|
           total += number.to_i
-          number.to_i.times {Encounter.create!(encounter_type: type.to_s.humanize(capitalize: false), encountered_on: encountered_on, user: current_user)}
+          number.to_i.times  do
+            Encounter.create!(
+              encounter_type: type.to_s.humanize(capitalize: false),
+              encountered_on: encountered_on,
+              user: current_user
+            )
+          end
         end
       end
     rescue ActiveRecord::ActiveRecordError => error
@@ -102,10 +107,6 @@ class EncountersController < ApplicationController
     end
 
     def encounter_types
-      params.require(:encounter_types).permit(
-        :adult_inpatient, :adult_ed, :adult_icu, :adult_inpatient_surgery,
-        :pediatric_inpatient, :pediatric_newborn, :pediatric_ed,
-        :continuity_inpatient, :continuity_external
-      )
+      params.require(:encounter_types).permit(*Encounter::TYPES)
     end
 end

@@ -93,6 +93,8 @@ GEM
     factory_girl_rails (4.5.0)
       factory_girl (~> 4.5.0)
       railties (>= 3.0.0)
+    faker (1.4.3)
+      i18n (~> 0.5)
     ffi (1.9.6)
     foreman (0.75.0)
       dotenv (~> 0.11.1)
@@ -249,6 +251,7 @@ DEPENDENCIES
   eefgilm
   factory_girl
   factory_girl_rails
+  faker
   foreman
   guard-bundler
   guard-livereload
