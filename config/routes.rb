@@ -5,7 +5,7 @@ Rails.application.routes.draw do
 
   namespace :api do
     namespace :v1 do
-      resources :encounters, only: [:index, :create, :update, :destroy]
+      resources :encounters, only: [:index, :create, :destroy]
     end
   end
 

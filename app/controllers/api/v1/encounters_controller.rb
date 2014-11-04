@@ -28,10 +28,6 @@ module Api
         render json: encounters, status: 201
       end
 
-      def update
-
-      end
-
       def destroy
 
       end
