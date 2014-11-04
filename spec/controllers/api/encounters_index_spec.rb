@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe Api::V1::EncountersController, :type => :controller do
+RSpec.describe Api::V1::EncountersController, type: :controller do
   describe 'GET #index' do
     before(:each) do
       @resident = create(:resident)
