@@ -2039,6 +2039,9 @@ section {
     width: 300px;
   }
 
+  #img_prev{
+  visibility: hidden;
+  }
   body {
     /*margin-right: -20px;*/
   }
