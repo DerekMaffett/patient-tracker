@@ -38,6 +38,7 @@ class EncountersController < ApplicationController
   # POST /encounters
   # POST /encounters.json
   def create
+
     total = 0
     begin
       ActiveRecord::Base.transaction do

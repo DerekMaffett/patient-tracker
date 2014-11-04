@@ -7,7 +7,25 @@ module Api
       end
 
       def create
+        encounters = []
+        begin
+          ActiveRecord::Base.transaction do
+            encounter_types.each do |type, number|
+              number.to_i.times  do
+                encounters.push Encounter.create!(
+                  encounter_type: type.to_s.humanize(capitalize: false),
+                  encountered_on: encountered_on,
+                  user: current_user
+                )
+              end
+            end
+          end
+        rescue ActiveRecord::ActiveRecordError => error
+          STDERR.puts "Error in EncountersController#create: #{error.message}"
+          render json: 'Error, records not saved', status: 422
+        end
 
+        render json: encounters, status: 201
       end
 
       def update
@@ -16,6 +34,20 @@ module Api
 
       def destroy
 
+      end
+
+      private
+
+      def encounter_params
+        params.require(:encounter).permit(:encounter_type)
+      end
+
+      def encountered_on
+        params.require(:encountered_on)
+      end
+
+      def encounter_types
+        params.require(:encounter_types).permit(*Encounter::TYPES)
       end
     end
   end
