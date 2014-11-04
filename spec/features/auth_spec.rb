@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe 'sign-in' do
+describe 'Authentication' do
   before(:each) do
     @resident = create(:resident)
   end

@@ -4,15 +4,16 @@ class EncountersController < ApplicationController
   # GET /encounters
   # GET /encounters.json
   def index
-    @encounters = Encounter.all.includes(:user).order(encountered_on: :desc).order('users.name ASC')
+    @encounters = policy_scope(Encounter).includes(:user).order_name_and_time
   end
 
   def summary
-    @encounters = Encounter.all.includes(:user).order(encountered_on: :desc).order('users.name ASC')
+    @encounters = Encounter.all.includes(:user).order_name_and_time
 
     #TODO: Map encounter_type values to an integer so that reults can be ordered
     #identical to encounters/new view
-    @encounters_count = Encounter.group(:user_id, :encounter_type).order(:user_id, :encounter_type).count
+    @encounters_count = Encounter.group(:user_id, :encounter_type)
+      .order(:user_id, :encounter_type).count
 
     respond_to do |format|
       format.html
@@ -43,7 +44,13 @@ class EncountersController < ApplicationController
       ActiveRecord::Base.transaction do
         encounter_types.each do |type, number|
           total += number.to_i
-          number.to_i.times {Encounter.create!(encounter_type: type.to_s.humanize(capitalize: false), encountered_on: encountered_on, user: current_user)}
+          number.to_i.times  do
+            Encounter.create!(
+              encounter_type: type.to_s.humanize(capitalize: false),
+              encountered_on: encountered_on,
+              user: current_user
+            )
+          end
         end
       end
     rescue ActiveRecord::ActiveRecordError => error
@@ -101,10 +108,6 @@ class EncountersController < ApplicationController
     end
 
     def encounter_types
-      params.require(:encounter_types).permit(
-        :adult_inpatient, :adult_ed, :adult_icu, :adult_inpatient_surgery,
-        :pediatric_inpatient, :pediatric_newborn, :pediatric_ed,
-        :continuity_inpatient, :continuity_external
-      )
+      params.require(:encounter_types).permit(*Encounter::TYPES)
     end
 end

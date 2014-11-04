@@ -1,8 +1,14 @@
 class EncounterPolicy < ApplicationPolicy
+  class NullUser
+    def method_missing(method)
+      false
+    end
+  end
+
   attr_reader :user, :encounter
 
   def initialize(user, encounter)
-    @user = user
+    @user = user || NullUser.new
     @encounter = encounter
   end
 
@@ -36,7 +42,7 @@ class EncounterPolicy < ApplicationPolicy
 
   class Scope < Struct.new(:user, :scope)
     def resolve
-      scope
+      scope.where(user_id: user.id)
     end
   end
 end
