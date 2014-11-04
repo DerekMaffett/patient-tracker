@@ -10,6 +10,7 @@
     <%= link_to 'Summary', summary_path %> <br />
   <% end %>
   <%= link_to 'Sign Out', destroy_user_session_path(user_session), method: "delete" %> |
+    <%= link_to 'Edit account', edit_user_registration_path %>
   <%= mail_to 'the.encounter.counter@gmail.com', 'Feedback', subject: 'Feedback',
   body: "Please share any feedback for this app!  You might want to report unexpected behavior, errors, display problems, navigation problems, confusing information, desired features, or any other topic. Be as brief or elaborate as you wish.\n\nDuplicate feedback is welcome; it helps with prioritization." %>
 <% end %>
