@@ -36,7 +36,7 @@ class EncounterPolicy < ApplicationPolicy
 
   class Scope < Struct.new(:user, :scope)
     def resolve
-      scope
+      scope.where(user_id: user.id)
     end
   end
 end

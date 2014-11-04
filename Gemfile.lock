@@ -1,4 +1,12 @@
 GIT
+  remote: git://github.com/rails-api/active_model_serializers.git
+  revision: cd1829d0c0c83c61db615edb829aa9be017fad39
+  branch: 0-9-stable
+  specs:
+    active_model_serializers (0.9.0)
+      activemodel (>= 3.2)
+
+GIT
   remote: https://github.com/stripe/stripe-ruby
   revision: 7aee297980aba1863c7e3294feb3eb4f2ee44911
   specs:
@@ -232,6 +240,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  active_model_serializers!
   better_errors (~> 1.1.0)
   binding_of_caller (~> 0.7.2)
   capybara

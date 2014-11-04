@@ -1,8 +1,12 @@
 Rails.application.routes.draw do
   devise_for :users
   get 'encounters/summary' => 'encounters#summary', as: :summary
-  resources :users
   resources :encounters
+
+  scope 'api/:api' do
+    resources :encounters, only: [:index, :create, :update, :destroy]
+  end
+
   resources :charges
   root 'encounters#new'
 

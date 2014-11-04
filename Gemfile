@@ -16,6 +16,10 @@ gem 'sass-rails', '~> 4.0.3'
 gem 'stripe', :git => 'https://github.com/stripe/stripe-ruby'
 gem 'turbolinks', '~> 2.2.2'
 gem 'uglifier', '>= 1.3.0'
+gem 'active_model_serializers',
+  github: 'rails-api/active_model_serializers',
+  branch: '0-9-stable'
+
 
 group :development do
   gem 'spring', '~> 1.1.3'

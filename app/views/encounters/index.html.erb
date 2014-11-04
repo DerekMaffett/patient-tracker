@@ -29,14 +29,12 @@
 
         <tbody>
           <% @encounters.each do |encounter| %>
-            <% if policy(encounter).index? %>
-              <tr class="lineitem_index fullwidth">
-                <td><%= encounter.user.present? ? encounter.user.name : "Unknown" %></th>
-                <td><%= link_to encounter.encounter_type, encounter %></td>
-                <td><%= encounter.encountered_on %></td>
-                <td><%= encounter.created_at.to_date %></td>
-              </tr>
-            <% end %>
+            <tr class="lineitem_index fullwidth">
+              <td><%= encounter.user.present? ? encounter.user.name : "Unknown" %></th>
+              <td><%= link_to encounter.encounter_type, encounter %></td>
+              <td><%= encounter.encountered_on %></td>
+              <td><%= encounter.created_at.to_date %></td>
+            </tr>
           <% end %>
         </tbody>
       </table>
