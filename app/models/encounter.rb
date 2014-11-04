@@ -16,7 +16,7 @@ class Encounter < ActiveRecord::Base
   validates :encountered_on, presence: true
 
   after_commit :transaction_success
-  after_rollback :transaction_failure
+  after_rollback :transaction_failure unless Rails.env == 'test'
 
   private
     #TODO: improve transaction error logging!
