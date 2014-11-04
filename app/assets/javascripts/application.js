@@ -16,6 +16,9 @@
 //= require turbolinks
 //= require jquery-mobile-bower/js/jquery.mobile-1.4.2.min
 //= require jquery-ui/jquery-ui.min
+//= require angular/angular.min
+//= require angular-cookies/angular-cookies.min
+//= require angular-route/angular-route.min
 //= require encounters
 //= require sign_up
 //= require ng_patient_tracker
