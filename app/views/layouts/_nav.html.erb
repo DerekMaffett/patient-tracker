@@ -1,16 +1,25 @@
+
+<div class="button-bar">
+  <ul class="button-group [radius round]">
 <% if current_user %>
   <% if controller_name == 'encounters' && action_name == 'index' && policy(@encounters).create? %>
-    <%= link_to 'Add Encounters', new_encounter_path %> |
+
+  <li class="small button secondary"><%= link_to 'Add Encounters', new_encounter_path %> </li>
   <% else %>
-    <%= link_to 'All Encounters', encounters_path %> |
+        <li class="small button secondary"><%= link_to 'All Encounters', encounters_path %></li>
   <% end %>
   <% if controller_name == 'encounters' && action_name == 'summary' %>
-    <%= link_to 'Download as Excel', summary_path(format: 'xls'), data: {ajax: false} %> <br />
+        <li class="small button secondary"> <%= link_to 'Download as Excel', summary_path(format: 'xls'), data: {ajax: false} %> </li>
   <% else %>
-    <%= link_to 'Summary', summary_path %> <br />
+            <li class="small button secondary">   <%= link_to 'Summary', summary_path %></li>
   <% end %>
-  <%= link_to 'Sign Out', destroy_user_session_path(user_session), method: "delete" %> |
-    <%= link_to 'Edit account', edit_user_registration_path %>
-  <%= mail_to 'the.encounter.counter@gmail.com', 'Feedback', subject: 'Feedback',
-  body: "Please share any feedback for this app!  You might want to report unexpected behavior, errors, display problems, navigation problems, confusing information, desired features, or any other topic. Be as brief or elaborate as you wish.\n\nDuplicate feedback is welcome; it helps with prioritization." %>
-<% end %>
+    <li class="small button secondary"><%= link_to 'Sign Out', destroy_user_session_path(user_session), method: "delete" %> </li>
+    <li class="small button secondary">  <%= link_to 'Edit account', edit_user_registration_path %></li>
+    <% end %> </ul>
+
+    </div>
+
+
+
+
+
