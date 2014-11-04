@@ -3,8 +3,10 @@ Rails.application.routes.draw do
   get 'encounters/summary' => 'encounters#summary', as: :summary
   resources :encounters
 
-  scope 'api/:api' do
-    resources :encounters, only: [:index, :create, :update, :destroy]
+  namespace :api do
+    namespace :v1 do
+      resources :encounters, only: [:index, :create, :update, :destroy]
+    end
   end
 
   resources :charges
