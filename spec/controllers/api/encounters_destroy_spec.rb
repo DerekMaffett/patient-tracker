@@ -9,6 +9,7 @@ RSpec.describe Api::V1::EncountersController, type: :controller do
         @encounter = create(:encounter, user_id: @resident.id)
 
         delete :destroy, id: @encounter
+        expect(response).to have_http_status 204
         expect(Encounter.all).to_not include(@encounter)
       end
     end
