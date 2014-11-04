@@ -1,8 +1,7 @@
 module Api
   class EncountersController < ApplicationController
     def index
-      encounters = Encounter.all.includes(:user).order(encountered_on: :desc)
-      .order('users.name ASC')
+      encounters = policy_scope(Encounter).includes(:user).order_name_and_time
     end
 
     def create

@@ -4,13 +4,11 @@ class EncountersController < ApplicationController
   # GET /encounters
   # GET /encounters.json
   def index
-    @encounters = policy_scope(Encounter).includes(:user)
-      .order(encountered_on: :desc).order('users.name ASC')
+    @encounters = policy_scope(Encounter).includes(:user).order_name_and_time
   end
 
   def summary
-    @encounters = Encounter.all.includes(:user).order(encountered_on: :desc)
-      .order('users.name ASC')
+    @encounters = Encounter.all.includes(:user).order_name_and_time
 
     #TODO: Map encounter_type values to an integer so that reults can be ordered
     #identical to encounters/new view
