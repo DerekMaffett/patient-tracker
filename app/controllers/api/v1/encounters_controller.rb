@@ -31,6 +31,7 @@ module Api
 
       def destroy
         encounter = Encounter.find(params[:id])
+        authorize encounter
         encounter.destroy
         render nothing: true, status: 204
       end

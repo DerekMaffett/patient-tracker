@@ -38,7 +38,6 @@ RSpec.describe Api::V1::EncountersController, type: :controller do
     context 'when submitting data while not signed in' do
       it 'should not save or return data' do
         expect { post :create, @data }.to raise_error Pundit::NotAuthorizedError
-
       end
     end
   end
