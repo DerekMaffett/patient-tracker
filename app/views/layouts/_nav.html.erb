@@ -1,4 +1,5 @@
 
+
 <div class="button-bar">
   <ul class="button-group [radius round]">
 <% if current_user %>
@@ -16,8 +17,8 @@
     <li class="small button secondary"><%= link_to 'Sign Out', destroy_user_session_path(user_session), method: "delete" %> </li>
     <li class="small button secondary">  <%= link_to 'Edit account', edit_user_registration_path %></li>
     <% end %> </ul>
+</div>
 
-    </div>
 
 
 
