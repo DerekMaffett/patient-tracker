@@ -1,8 +1,14 @@
 class EncounterPolicy < ApplicationPolicy
+  class NullUser
+    def method_missing(method)
+      false
+    end
+  end
+
   attr_reader :user, :encounter
 
   def initialize(user, encounter)
-    @user = user
+    @user = user || NullUser.new
     @encounter = encounter
   end
 

@@ -13,7 +13,7 @@ RSpec.describe Api::V1::EncountersController, type: :controller do
       expect(json(response)[:encounters].size).to eq 0
     end
 
-    describe 'when multiple residents are on the app' do
+    describe 'when multiple residents are using the app' do
       it 'should only show encounters for the individual residents' do
         @second_resident = create(:resident)
         create(:encounter, user_id: @second_resident.id)
