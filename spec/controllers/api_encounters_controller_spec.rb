@@ -27,6 +27,10 @@ RSpec.describe Api::V1::EncountersController, :type => :controller do
           .to be_between Date.today - 30.days, Date.today
         expect(json(response)[:encounters][0][:submitted_on].to_date)
           .to eq Date.today
+        expect(json(response)[:encounters][0][:user][:name])
+          .to eq @resident.name
+        expect(json(response)[:encounters][0][:user][:encrypted_password])
+          .to be_nil
       end
     end
   end
