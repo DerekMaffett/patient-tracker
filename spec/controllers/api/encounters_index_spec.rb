@@ -9,8 +9,20 @@ RSpec.describe Api::V1::EncountersController, type: :controller do
     it 'shows no encounters if resident has none' do
       log_in_as @resident
       get :index
-      expect(response).to have_http_status(200)
+      expect(response).to have_http_status 200
       expect(json(response)[:encounters].size).to eq 0
+    end
+
+    describe 'when multiple residents are on the app' do
+      it 'should only show encounters for the individual residents' do
+        @second_resident = create(:resident)
+        create(:encounter, user_id: @second_resident.id)
+        log_in_as @resident
+        get :index
+
+        expect(response).to have_http_status 200
+        expect(json(response)[:encounters].size).to eq 0
+      end
     end
 
     describe 'when a resident has multiple encounters' do
