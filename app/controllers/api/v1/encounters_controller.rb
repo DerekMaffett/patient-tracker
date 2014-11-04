@@ -21,8 +21,8 @@ module Api
             end
           end
         rescue ActiveRecord::ActiveRecordError => error
-          STDERR.puts "Error in EncountersController#create: #{error.message}"
-          render json: 'Error, records not saved', status: 422
+          logger.error "Error in EncountersController#create: #{error.message}"
+          return render json: [error.message], status: 422
         end
 
         render json: encounters, status: 201
