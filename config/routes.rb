@@ -9,6 +9,6 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :charges
+  resources :charges, only: [:new, :create]
   root 'encounters#new'
 end
