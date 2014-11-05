@@ -1,15 +1,31 @@
-<% if current_user %>
-  <% if controller_name == 'encounters' && action_name == 'index' && policy(@encounters).create? %>
-    <%= link_to 'Add Encounters', new_encounter_path %> |
-  <% else %>
-    <%= link_to 'All Encounters', encounters_path %> |
-  <% end %>
-  <% if controller_name == 'encounters' && action_name == 'summary' %>
-    <%= link_to 'Download as Excel', summary_path(format: 'xls'), data: {ajax: false} %> <br />
-  <% else %>
-    <%= link_to 'Summary', summary_path %> <br />
-  <% end %>
-  <%= link_to 'Sign Out', destroy_user_session_path(user_session), method: "delete" %> |
-  <%= mail_to 'the.encounter.counter@gmail.com', 'Feedback', subject: 'Feedback',
-  body: "Please share any feedback for this app!  You might want to report unexpected behavior, errors, display problems, navigation problems, confusing information, desired features, or any other topic. Be as brief or elaborate as you wish.\n\nDuplicate feedback is welcome; it helps with prioritization." %>
-<% end %>
+<div class="button-bar">
+  <ul class="button-group">
+  <!-- if current_user  -->
+    <!-- if controller_name == 'encounters' && action_name == 'index' && policy(@encounters).create?  -->
+
+    <li class="small button secondary">
+      <a href="">Add Encounters</a>
+    </li>
+  <!-- else  -->
+    <li class="small button secondary">
+      <a href="">All Encounters</a>
+    </li>
+  <!-- end  -->
+   <!-- if controller_name == 'encounters' && action_name == 'summary' -->
+    <li class="small button secondary">
+      <a href="">Download as Excel</a>
+    </li>
+  <!-- else -->
+    <li class="small button secondary">
+      <a href="">Summary</a>
+    </li>
+   <!-- end -->
+    <li class="small button secondary">
+      <a href="">Sign Out</a>
+    </li>
+    <li class="small button secondary">
+      <a href="">Edit account</a>
+    </li>
+     <!-- end  -->
+  </ul>
+</div>

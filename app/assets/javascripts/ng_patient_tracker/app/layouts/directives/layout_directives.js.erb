@@ -15,4 +15,12 @@
       templateUrl: '<%= asset_path("ng_patient_tracker/app/layouts/views/nav.html") %>'
     };
   });
+
+  app.directive('pageFooter', function() {
+    return {
+      restrict: 'A',
+      templateUrl: '<%= asset_path("ng_patient_tracker/app/layouts/views/footer.html") %>',
+      controller: 'FooterCtrl'
+    };
+  });
 })();

@@ -1,4 +1,4 @@
-<div id="encounters_index">
+<div id="encounters_index" data-ng-init="index()">
   <div page-header title="Encounters"></div>
   <!-- render 'layouts/flash_messages' -->
 
@@ -14,7 +14,7 @@
       </div>
 
       <div class="wrap_section_narrow">
-      <table data-role="table" id="encounter_encounters_table" class="ui-responsive">
+      <table id="encounter_encounters_table" >
         <thead>
           <tr class="fullwidth">
             <th>Resident</th>
@@ -26,17 +26,17 @@
 
         <tbody data-ng-repeat="encounter in encounters">
           <tr class="lineitem_index fullwidth">
-            <td><%= encounter.user.present? ? encounter.user.name : "Unknown" %></th>
-            <td><%= link_to encounter.encounter_type, encounter %></td>
-            <td><%= encounter.encountered_on %></td>
-            <td><%= encounter.created_at.to_date %></td>
+            <td>{{encounter.user.name}}</th>
+            <td><a href="">{{encounter.encounter_type}}</a></td>
+            <td>{{encounter.encountered_on}}</td>
+            <td>{{encounter.submitted_on| date : 'short'}}</td>
           </tr>
         </tbody>
       </table>
       </div>
-    <% end %>
+    <!-- end -->
 
   <div class="form-block">
   </div>
-  <%= render 'layouts/footer' %>
+  <div page-footer></div>
 </div>
