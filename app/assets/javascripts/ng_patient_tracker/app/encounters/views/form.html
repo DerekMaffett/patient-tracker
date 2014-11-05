@@ -1,0 +1,17 @@
+<%= form_tag("/encounters", method: "post", class: 'new_encounter form-horizontal', role: 'form', data: {ajax: false}) do %>
+
+  <%= render 'errors' %>
+
+  <div class="field">
+    <%= hidden_field_tag(:encountered_on, Time.zone.today) %>
+
+    <% encounter_types.each do |encounter_type| %>
+      <%= hidden_field(:encounter_types, encounter_type.to_sym, value: "0") %>
+    <% end %>
+  </div>
+
+  <div class="actions">
+    <%= submit_tag('Submit', class: 'signUpBtnMid blockFloatRight') %>
+  </div>
+
+<% end %>

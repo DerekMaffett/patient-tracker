@@ -1,0 +1,14 @@
+(function() {
+  var app = angular.module('CounterApp');
+
+  app.config(['$routeProvider', function($routeProvider) {
+    $routeProvider
+      .when('/encounters', {
+        controller: 'EncountersCtrl',
+        templateUrl: '<%= asset_path("ng_patient_tracker/app/encounters/views/encounters.html") %>'
+      })
+      .otherwise({
+        redirectTo: '/encounters'
+      });
+  }]);
+})();

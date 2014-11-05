@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   devise_for :users
-  get 'encounters/summary' => 'encounters#summary', as: :summary
-  resources :encounters
+  # get 'encounters/summary' => 'encounters#summary', as: :summary
+  # resources :encounters
 
   namespace :api do
     namespace :v1 do
@@ -10,5 +10,6 @@ Rails.application.routes.draw do
   end
 
   resources :charges, only: [:new, :create]
-  root 'encounters#new'
+  # root 'encounters#new'
+  root 'angular#index'
 end

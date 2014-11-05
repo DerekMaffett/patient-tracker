@@ -1,0 +1,52 @@
+<div data-role="page" id="form" data-url="form" tabindex="0" style="min-height: 658px;">
+
+  <% content_for :header_title, 'How many encounters did you help today?' %>
+  <%= render 'layouts/header' %>
+  <%= render 'layouts/flash_messages' %>
+
+  <% if !current_user %>
+
+    <%= render 'layouts/sign_in_message' %>
+
+    <div class="wrap_section_narrow">
+      <div class="spacer">
+        <%= mail_to 'the.encounter.counter@gmail.com', 'Contact', body: "If you are having difficult using this app, or would like to contact the creator of this app, please add your message below." %>
+      </div>
+    </div>
+  <% else %>
+    <div class="wrap_section_narrow">
+      <div class="spacer">
+        <%= date_field_tag(:date, Time.zone.today, onchange: "setEncounteredOn()") %>
+      </div>
+    </div>
+
+    <div class="wrap_section_narrow">
+
+      <% encounter_types = ['adult_inpatient', 'adult_ed', 'adult_icu', 'adult_inpatient_surgery',
+         'pediatric_inpatient', 'pediatric_newborn', 'pediatric_ed',
+         'continuity_inpatient', 'continuity_external'] %>
+
+      <%= render partial: 'encounter_types', locals: {encounter_types: encounter_types} %>
+
+      <div class="form-block">
+        <%= render partial: 'form', locals: {encounter_types: encounter_types} %>
+      </div>
+    </div>
+    <div class="wrap_section_narrow" style="background-color: none">
+      <div id="buttonsLine"class="row">
+        <%= submit_tag('Reset', class: 'resetBtnMid blockFloat', onclick: "resetEncounters()") %>
+        <div id="totalEncountersBlock">
+          <div id="total" class="totalnumber blockFloat">0</div>
+        </div>
+      </div>
+    </div>
+  <div class="spacer">
+  </div>
+  <div class="wrap_section_narrow_wc" style="background-color: none">
+    <div class="spacer">
+      <%= render 'layouts/nav' %>
+    </div>
+  </div>
+  <% end %>
+  <%= render 'layouts/footer' %>
+</div>
