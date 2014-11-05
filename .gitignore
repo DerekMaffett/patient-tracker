@@ -18,7 +18,8 @@
 # Ignore application configuration
 /config/application.yml
 /figaro.sh
-
+.idea
+.DS_Store
 /.env
 
 /to-do

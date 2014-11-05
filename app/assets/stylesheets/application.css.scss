@@ -12,6 +12,64 @@
  *
  *= require_tree .
  *= require_self
+ //= require foundation_and_overrides
+
  */
 
 @import "gibson";
+
+.button-bar {background-color: #e7e7e7;}
+
+.wrap_section_narrow_top {
+  height: 145px;
+  max-width: 620px;
+  padding-left: 25px;
+  padding-right: 25px;
+  padding-top: 20px;
+  margin: 0px auto 0 auto;
+  background-color: #f3f3f4;
+  font-size: 36px;
+  line-height: 43px;
+  font-family: 'GibsonLight', Verdana, sans-serif;
+  color: #221f1f;
+}
+.fullwidth_footer {
+  margin-top: 5em;
+  text-align: center;
+  width: 100%;
+  background-color: #ddd;
+}
+.wrap_section_narrow_top {
+  height: 145px;
+  max-width: 620px;
+  padding-left: 25px;
+  padding-right: 25px;
+  padding-top: 20px;
+  margin: 0px auto 0 auto;
+  background-color: #ffffff;
+  font-size: 36px;
+  line-height: 43px;
+  font-family: 'GibsonLight', Verdana, sans-serif;
+  color: #221f1f;
+}
+
+.fullwidth {
+  background-color: #ffffff;
+  width: 100%;
+  border-bottom: 1px solid #d3d3d3;
+
+  .header_title {color:#65acd3}
+  .wrap_section_narrow_top {
+    height: 175px;
+    max-width: 620px;
+    padding-left: 25px;
+    padding-right: 25px;
+    padding-top: 20px;
+    margin: 0px auto 0 auto;
+    background-color: #ffffff;
+    font-size: 36px;
+    line-height: 43px;
+    font-family: 'GibsonLight', Verdana, sans-serif;
+    color: #221f1f;
+  }
+}
