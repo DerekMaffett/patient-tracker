@@ -4,7 +4,8 @@
   app.directive('pageHeader', function() {
     return {
       restrict: 'A',
-      templateUrl: '<%= asset_path("ng_patient_tracker/app/layouts/views/header.html") %>'
+      templateUrl: '<%= asset_path("ng_patient_tracker/app/layouts/views/header.html") %>',
+      scope: { title: '@title' }
     };
   });
 })();

@@ -13,8 +13,6 @@
 //= require jquery
 //= require jquery_ujs
 //= require foundation
-//= require turbolinks
-//= require jquery-mobile-bower/js/jquery.mobile-1.4.2.min
 //= require jquery-ui/jquery-ui.min
 //= require angular/angular.min
 //= require angular-cookies/angular-cookies.min
