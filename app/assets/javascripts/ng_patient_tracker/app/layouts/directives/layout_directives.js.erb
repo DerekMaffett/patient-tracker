@@ -8,4 +8,11 @@
       scope: { title: '@title' }
     };
   });
+
+  app.directive('pageNav', function() {
+    return {
+      restrict: 'A',
+      templateUrl: '<%= asset_path("ng_patient_tracker/app/layouts/views/nav.html") %>'
+    };
+  });
 })();
