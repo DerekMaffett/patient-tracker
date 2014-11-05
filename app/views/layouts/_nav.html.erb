@@ -1,7 +1,5 @@
-
-
 <div class="button-bar">
-  <ul class="button-group [radius round]">
+  <ul class="button-group">
 <% if current_user %>
   <% if controller_name == 'encounters' && action_name == 'index' && policy(@encounters).create? %>
 
