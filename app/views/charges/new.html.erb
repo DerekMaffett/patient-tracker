@@ -12,6 +12,7 @@
   </article>
 
   <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+          id='stripe-charge'
           data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
           data-description="A year's subscription"
           data-amount="500"></script>

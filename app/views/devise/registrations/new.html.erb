@@ -41,7 +41,7 @@
     <div>
       <%= f.label :avatar %>
       <img id="img_prev" src="#" alt="your image" style='visibility:hidden'/>
-      <%= f.file_field :avatar, onchange: 'readURL(this)'  %>
+      <%= f.file_field :avatar%>
       <%= f.hidden_field :avatar_cache %>
 
     </div>
