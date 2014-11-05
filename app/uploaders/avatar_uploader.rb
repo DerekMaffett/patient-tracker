@@ -42,6 +42,7 @@ class AvatarUploader < CarrierWave::Uploader::Base
 
   version :full do
     process :resize_to_fill => [500, 500]
+  end
 
   # def store_dir
   #   "#{Rails.root}/assets/uploads/#{model.class.to_s.underscore}/#{mounted_as}/#{model.id}"
