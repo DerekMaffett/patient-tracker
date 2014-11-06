@@ -1,0 +1,31 @@
+{
+  "name": "patient_tracker",
+  "version": "0.0.1",
+  "homepage": "https://github.com/DerekMaffett/patient_tracker",
+  "authors": [
+    "Derek Maffett <derekgmaffett@gmail.com>",
+    "Nick Manos <>",
+    "Gabe Khofi <>"
+  ],
+  "description": "Patient encounter tracker",
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "vendor/assets/components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery-mobile-bower": "*",
+    "jquery-ui": "*",
+    "angular": "*",
+    "angular-route": "*",
+    "angular-cookies": "*"
+  },
+  "resolutions": {
+    "jquery-ui": "1.11.2"
+  }
+}

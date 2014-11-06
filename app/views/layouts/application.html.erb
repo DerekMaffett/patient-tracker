@@ -1,8 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Encounter Counter</title>
+    <%= stylesheet_link_tag    'application', media: 'all' %>
+    <%= javascript_include_tag 'application' %>
+    <%= csrf_meta_tags %>
+    <%= favicon_link_tag 'swedish.jpg' %>
+    <%= favicon_link_tag 'swedish.jpg', rel: 'apple-touch-icon', type: 'image/jpeg' %>
+
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="description" content="The Encounter Counter allows resident physicians to quickly
     and efficiently record a daily count of each type of encounter encounter.">
     <title><%= content_for?(:title) ? yield(:title) : "The Encounter Counter" %></title>

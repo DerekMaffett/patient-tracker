@@ -1,0 +1,32 @@
+<div class="button-bar">
+  <ul class="button-group">
+  <!-- if current_user  -->
+    <!-- if controller_name == 'encounters' && action_name == 'index' && policy(@encounters).create?  -->
+
+    <li class="small button secondary" data-ng-click="setTab('Index')">
+      <a href="">All Encounters</a>
+    </li>
+    <li class="small button secondary" data-ng-click="setTab('New')">
+      <a href="">Add Encounters</a>
+    </li>
+  <!-- else  -->
+
+  <!-- end  -->
+   <!-- if controller_name == 'encounters' && action_name == 'summary' -->
+    <li class="small button secondary">
+      <a href="">Download as Excel</a>
+    </li>
+  <!-- else -->
+    <li class="small button secondary">
+      <a href="">Summary</a>
+    </li>
+   <!-- end -->
+    <li class="small button secondary">
+      <a href="">Sign Out</a>
+    </li>
+    <li class="small button secondary">
+      <a href="">Edit account</a>
+    </li>
+     <!-- end  -->
+  </ul>
+</div>

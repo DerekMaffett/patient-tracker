@@ -10,5 +10,6 @@ Rails.application.routes.draw do
   end
 
   resources :charges, only: [:new, :create]
-  root 'encounters#new'
+  # root 'encounters#new'
+  root 'angular#index'
 end

@@ -1,0 +1,22 @@
+<div class="spacer"></div>
+<div class="wrap_section_narrow">
+  <table id="encounter_encounters_table" >
+    <thead>
+      <tr class="fullwidth">
+        <th>Resident</th>
+        <th>Type</th>
+        <th>Encountered</th>
+        <th>Submitted</th>
+      </tr>
+    </thead>
+
+    <tbody data-ng-repeat="encounter in encounters">
+      <tr class="lineitem_index fullwidth">
+        <td>{{encounter.user.name}}</th>
+        <td><a href="">{{encounter.encounter_type}}</a></td>
+        <td>{{encounter.encountered_on}}</td>
+        <td>{{encounter.submitted_on| date : 'short'}}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>

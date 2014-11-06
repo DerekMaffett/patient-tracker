@@ -1,0 +1,31 @@
+(function() {
+  var app = angular.module('EncounterDirectives', []);
+
+  app.directive('encountersIndex', function() {
+    return {
+      restrict: 'A',
+      templateUrl: '<%= asset_path("ng_patient_tracker/app/encounters/views/index.html") %>'
+    };
+  });
+
+  app.directive('encountersNew', function() {
+    return {
+      restrict: 'A',
+      templateUrl: '<%= asset_path("ng_patient_tracker/app/encounters/views/new.html") %>'
+    };
+  });
+
+  app.directive('encounterTypes', function() {
+    return {
+      restrict: 'A',
+      templateUrl: '<%= asset_path("ng_patient_tracker/app/encounters/views/types.html") %>'
+    };
+  });
+
+  app.directive('encounterButtons', function() {
+    return {
+      restrict: 'A',
+      templateUrl: '<%= asset_path("ng_patient_tracker/app/encounters/views/buttons.html") %>'
+    };
+  });
+})();

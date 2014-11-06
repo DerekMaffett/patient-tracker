@@ -1,0 +1,59 @@
+<div data-role="page" id="show">
+
+  <% content_for :header_title, 'Encounter <br /> Details'.html_safe %>
+  <%= render 'layouts/header' %>
+  <%= render 'layouts/flash_messages' %>
+  <%= image_tag current_user.avatar.url%>
+  <% if !current_user %>
+
+    <%= render 'layouts/sign_in_message' %>
+
+  <% elsif !policy(@encounter).show? %>
+    <div class="wrap_section_narrow_top">
+      <div class="row">
+        <p>You are not authorized to view this encounter.</p>
+      </div>
+    </div>
+  <% else %>
+    <div class="wrap_section_narrow_wc" style="background-color: none">
+      <div class="spacer">
+        <%= render 'layouts/nav' %>
+      </div>
+    </div>
+
+    <div class="wrap_section_narrow">
+      <table data-role="table" id="encounter_encounters_table" class="ui-responsive">
+        <thead>
+          <tr class="fullwidth">
+            <th>Resident</th>
+            <th>Type</th>
+            <th>Encountered</th>
+            <th>Submitted</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <% if policy(@encounter).index? %>
+            <tr class="lineitem fullwidth">
+              <td><%= @encounter.user.present? ? @encounter.user.name : "Unknown" %></th>
+              <td><%= @encounter.encounter_type %></td>
+              <td><%= @encounter.encountered_on %></td>
+              <td><%= @encounter.created_at.to_date %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  <% end %>
+
+  <div class="wrap_section_narrow">
+    <div class="spacer">
+      <% if policy(@encounter).destroy? %>
+        <%= link_to 'Delete Encounter', encounter_path(@encounter), method: :delete, data: { confirm: "Are you sure you want to delete this encounter?" } %> |
+      <% end %>
+      <%= link_to 'Back', encounters_path %>
+    </div>
+  </div>
+
+  <%= render 'layouts/footer' %>
+</div>
