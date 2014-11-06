@@ -12,4 +12,11 @@
       return input.split(' ').slice(1).join(' ');
     };
   });
+
+  app.filter('serverTypes', function() {
+    return function(input) {
+      var lowerCase = input.toLowerCase();
+      return lowerCase.charAt(0).toUpperCase() + lowerCase.slice(1);
+    };
+  });
 })();
