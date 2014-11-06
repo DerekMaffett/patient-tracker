@@ -4,21 +4,21 @@
     <!-- if controller_name == 'encounters' && action_name == 'index' && policy(@encounters).create?  -->
 
     <li class="small button secondary" data-ng-click="setTab('Index')">
-      <a href="">All Encounters</a>
+      <a href>All Encounters</a>
     </li>
     <li class="small button secondary" data-ng-click="setTab('New')">
-      <a href="">Add Encounters</a>
+      <a href>Add Encounters</a>
     </li>
   <!-- else  -->
 
   <!-- end  -->
    <!-- if controller_name == 'encounters' && action_name == 'summary' -->
     <li class="small button secondary">
-      <a href="">Download as Excel</a>
+      <a href>Download as Excel</a>
     </li>
   <!-- else -->
-    <li class="small button secondary">
-      <a href="">Summary</a>
+    <li class="small button secondary" data-ng-click="setTab('Summary')">
+      <a href>Summary</a>
     </li>
    <!-- end -->
     <li class="small button secondary">
