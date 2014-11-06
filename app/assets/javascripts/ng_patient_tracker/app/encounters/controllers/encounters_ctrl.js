@@ -4,8 +4,6 @@
   app.controller('EncountersCtrl',
     ['$scope', '$http', function($scope, $http) {
 
-
-
       $scope.displayLabels = [
         "Adult Inpatient", "Adult ED", "Adult ICU", "Adult Inpatient Surgery",
         "Pediatric Inpatient", "Pediatric Newborn", "Pediatric ED",
@@ -38,7 +36,19 @@
             $scope.errors.push(data);
             console.log(data);
             console.log(status);
+          });
+      };
+
+      $scope.create = function() {
+        $http.post('api/v1/encounters', $scope.newEncounters)
+          .success(function(data) {
+            $scope.encounters = $scope.encounters + data['encounters'];
           })
+          .error(function(data, status) {
+            $scope.errors.push(data);
+            console.log(data);
+            console.log(status);
+          });
       };
 
       $scope.addEncounterType = function(label) {

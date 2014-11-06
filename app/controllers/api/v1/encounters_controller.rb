@@ -7,7 +7,7 @@ module Api
       end
 
       def create
-        authorize Encounter.new
+        authorize Encounter.new(user_id: current_user.try(:id))
         encounters = []
         begin
           ActiveRecord::Base.transaction do

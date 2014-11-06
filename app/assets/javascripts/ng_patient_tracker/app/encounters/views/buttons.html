@@ -2,7 +2,7 @@
   <div id="buttonsLine" class="row">
     <div class="actions">
       <input type="submit" data-ng-click="resetEncounters()" class="resetBtnMid blockFloat" value="Reset">
-      <input type="submit" class="signUpBtnMid blockFloatRight" value="Submit">
+      <input type="submit" data-ng-click="create()" data-ng-disabled="totalNewEncounters == 0" class="signUpBtnMid blockFloatRight" value="Submit">
     </div>
     <div id="totalEncountersBlock">
       <div id="total" class="totalnumber blockFloat">
