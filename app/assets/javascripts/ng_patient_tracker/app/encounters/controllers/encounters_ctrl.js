@@ -13,6 +13,7 @@
       ];
 
       $scope.encounters = {};
+      $scope.totalNewEncounters = 0;
       $scope.newEncounters = {
         encountered_on: new Date(),
         encounter_types: {
@@ -42,6 +43,7 @@
 
       $scope.addEncounterType = function(label) {
         $scope.newEncounters['encounter_types'][$scope.to_param(label)]++;
+        $scope.totalNewEncounters++;
         $scope.has_items = true;
       };
 

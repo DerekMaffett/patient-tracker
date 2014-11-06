@@ -4,7 +4,6 @@
       <strong>{{label | firstWord}}:</strong>
       {{label | lastWords}}
     </div>
-    <input type="hidden" data-ng-model="newEncounters['encounter_types'][to_param(label)]">
     <a href="" data-ng-click="addEncounterType(label); setTypeHasItems()">
       <div  class="linenumber blockFloatRight"
             id="{{to_param(label)}}"
