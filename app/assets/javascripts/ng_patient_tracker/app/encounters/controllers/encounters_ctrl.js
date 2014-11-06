@@ -42,6 +42,7 @@
 
       $scope.addEncounterType = function(label) {
         $scope.newEncounters['encounter_types'][$scope.to_param(label)]++;
+        $scope.has_items = true;
       };
 
       $scope.setTab = function(tab) {
