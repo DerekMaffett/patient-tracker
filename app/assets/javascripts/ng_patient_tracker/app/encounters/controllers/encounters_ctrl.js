@@ -21,5 +21,13 @@
           })
       };
 
+      $scope.setTab = function(tab) {
+        $scope.tab = tab;
+      };
+
+      $scope.currentTabIs = function(tab) {
+        return $scope.tab == tab;
+      };
+
   }]);
 })();

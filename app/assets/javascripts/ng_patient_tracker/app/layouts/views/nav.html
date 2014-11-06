@@ -3,11 +3,11 @@
   <!-- if current_user  -->
     <!-- if controller_name == 'encounters' && action_name == 'index' && policy(@encounters).create?  -->
 
-    <li class="small button secondary">
+    <li class="small button secondary" data-ng-click="setTab('New')">
       <a href="">Add Encounters</a>
     </li>
   <!-- else  -->
-    <li class="small button secondary">
+    <li class="small button secondary" data-ng-click="setTab('Index')">
       <a href="">All Encounters</a>
     </li>
   <!-- end  -->

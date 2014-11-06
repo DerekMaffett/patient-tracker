@@ -12,9 +12,10 @@
           <div page-nav></div>
         </div>
       </div>
-
-      <div encounters-index></div>
-      <div encounters-new></div>
+      <div data-ng-init="setTab('Index')">
+        <div encounters-index data-ng-show="currentTabIs('Index')"></div>
+        <div encounters-new data-ng-show="currentTabIs('New')"></div>
+      </div>
     <!-- end -->
 
   <div class="form-block">
