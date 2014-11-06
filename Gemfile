@@ -1,5 +1,6 @@
 source 'https://rubygems.org'
 ruby '2.1.3'
+
 gem 'foundation-rails'
 gem 'coffee-rails', '~> 4.0.0'
 gem 'devise', '~> 3.2.4'
@@ -24,6 +25,8 @@ gem 'active_model_serializers',
 group :development do
   gem 'spring', '~> 1.1.3'
 end
+
+gem "letter_opener", :group => :development
 
 group :development, :test do
   gem 'better_errors', '~> 1.1.0'

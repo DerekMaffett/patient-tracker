@@ -1,23 +1,22 @@
-
-
-<div class="button-bar">
-  <ul class="button-group [radius round]">
+<ul class="button-group ">
 <% if current_user %>
   <% if controller_name == 'encounters' && action_name == 'index' && policy(@encounters).create? %>
 
-  <li class="small button secondary"><%= link_to 'Add Encounters', new_encounter_path %> </li>
+  <li class="tiny button secondary"><%= link_to 'Add Encounters', new_encounter_path %> </li>
   <% else %>
-        <li class="small button secondary"><%= link_to 'All Encounters', encounters_path %></li>
+        <li class="tiny button secondary"><%= link_to 'All Encounters', encounters_path %></li>
   <% end %>
   <% if controller_name == 'encounters' && action_name == 'summary' %>
-        <li class="small button secondary"> <%= link_to 'Download as Excel', summary_path(format: 'xls'), data: {ajax: false} %> </li>
+        <li class="tiny button secondary"> <%= link_to 'Download as Excel', UserMailer.welcome_email(@user).deliver%> </li>
+
   <% else %>
-            <li class="small button secondary">   <%= link_to 'Summary', summary_path %></li>
+            <li class="tiny button secondary"> <%= link_to 'Download Summary', summary_path(format: 'xls'), data: {ajax: false} %></li>
+            <li class="tiny button secondary">   <%= link_to 'Email Summary', summary_path %></li>
   <% end %>
-    <li class="small button secondary"><%= link_to 'Sign Out', destroy_user_session_path(user_session), method: "delete" %> </li>
-    <li class="small button secondary">  <%= link_to 'Edit account', edit_user_registration_path %></li>
+    <li class="tiny button secondary"><%= link_to 'Sign Out', destroy_user_session_path(user_session), method: "delete" %> </li>
+
     <% end %> </ul>
-</div>
+
 
 
 
