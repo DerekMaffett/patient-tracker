@@ -5,6 +5,9 @@
     ['$scope', '$http', function($scope, $http) {
 
       $scope.encounters = {};
+      $scope.newEncounters = {
+        encountered_on: new Date()
+      };
 
       $scope.index = function() {
         $http.get('api/v1/encounters')
