@@ -13,6 +13,13 @@ RSpec.describe Api::V1::EncountersController, type: :controller do
       expect(json(response)[:encounters].size).to eq 0
     end
 
+    it 'shows the categories available to populate angular' do
+      log_in_as @resident
+      get :index
+      expect(json(response)[:encounter_types].size).to eq Encounter::TYPES.size
+      expect(json(response)[:encounter_types]).to eq Encounter::TYPES.map(&:to_s)
+    end
+
     describe 'when multiple residents are using the app' do
       it 'should only show encounters for the individual residents' do
         @second_resident = create(:resident)

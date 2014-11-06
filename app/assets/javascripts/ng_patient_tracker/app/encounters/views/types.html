@@ -1,0 +1,14 @@
+<div data-ng-repeat="label in displayLabels">
+  <div class="{{$first ? 'lineitem_end' : 'lineitem'}}">
+    <div class="linelabel blockFloat">
+      <strong>{{label | firstWord}}:</strong>
+      {{label | lastWords}}
+    </div>
+    <input type="hidden" data-ng-model="newEncounters['encounter_types'][to_param(label)]">
+    <a href="" data-ng-click="addEncounterType(label)">
+      <div class="linenumber gradient_light blockFloatRight" id="{{to_param(label)}}">
+        {{newEncounters['encounter_types'][to_param(label)]}}
+      </div>
+    </a>
+  </div>
+</div>

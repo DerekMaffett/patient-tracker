@@ -4,5 +4,5 @@
 (function() {
   var app = angular.module(
     'CounterApp',
-    ['LayoutDirectives', 'EncounterDirectives', 'ngRoute']);
+    ['LayoutDirectives', 'EncounterDirectives', 'EncounterFilters', 'ngRoute']);
 })();

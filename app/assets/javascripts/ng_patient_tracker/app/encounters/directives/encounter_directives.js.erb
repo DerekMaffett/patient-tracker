@@ -14,4 +14,11 @@
       templateUrl: '<%= asset_path("ng_patient_tracker/app/encounters/views/new.html") %>'
     };
   });
+
+  app.directive('encounterTypes', function() {
+    return {
+      restrict: 'A',
+      templateUrl: '<%= asset_path("ng_patient_tracker/app/encounters/views/types.html") %>'
+    }
+  })
 })();
