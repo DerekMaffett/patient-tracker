@@ -1,7 +1,7 @@
 class XlController < ApplicationController
 
-def welcome_email(email, name)
-  UserMailer.create_welcome_email(email, name).deliver
+def send_summary(email, name)
+  UserMailer.create_SendSummary(email, name).deliver
   redirect_to :root
 end
 end

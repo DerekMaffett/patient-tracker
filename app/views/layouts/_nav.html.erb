@@ -7,7 +7,7 @@
         <li class="tiny button secondary"><%= link_to 'All Encounters', encounters_path %></li>
   <% end %>
   <% if controller_name == 'encounters' && action_name == 'summary' %>
-        <li class="tiny button secondary"> <%= link_to 'Download as Excel', UserMailer.welcome_email(@user).deliver%> </li>
+        <li class="tiny button secondary"> <%= link_to 'Download as Excel', UserMailer.send_summary(@user).deliver%> </li>
 
   <% else %>
             <li class="tiny button secondary"> <%= link_to 'Download Summary', summary_path(format: 'xls'), data: {ajax: false} %></li>
