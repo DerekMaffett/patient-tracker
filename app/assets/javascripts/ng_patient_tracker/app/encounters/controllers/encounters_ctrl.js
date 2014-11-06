@@ -47,6 +47,13 @@
         $scope.has_items = true;
       };
 
+      $scope.resetEncounters = function() {
+        for (var type in $scope.newEncounters['encounter_types']) {
+          $scope.newEncounters['encounter_types'][type] = 0;
+          $scope.totalNewEncounters = 0;
+        }
+      }
+
       $scope.setTab = function(tab) {
         $scope.tab = tab;
       };
