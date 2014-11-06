@@ -9,7 +9,11 @@ Rails.application.routes.draw do
     end
   end
 
+  resources :groups
+
   resources :charges, only: [:new, :create]
-  # root 'encounters#new'
-  root 'angular#index'
+
+  root 'encounters#new'
+
 end
+
