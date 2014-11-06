@@ -19,6 +19,13 @@
     return {
       restrict: 'A',
       templateUrl: '<%= asset_path("ng_patient_tracker/app/encounters/views/types.html") %>'
-    }
-  })
+    };
+  });
+
+  app.directive('encounterButtons', function() {
+    return {
+      restrict: 'A',
+      templateUrl: '<%= asset_path("ng_patient_tracker/app/encounters/views/buttons.html") %>'
+    };
+  });
 })();
