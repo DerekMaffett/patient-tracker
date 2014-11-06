@@ -4,7 +4,7 @@ class EncountersController < ApplicationController
   # GET /encounters
   # GET /encounters.json
   def index
-    @encounters = Encounter.all.includes(:user).order_name_and_time
+     @encounters = Encounter.all.includes(:user).order_name_and_time
   end
 
   def summary
