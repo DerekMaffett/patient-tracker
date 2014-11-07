@@ -8,14 +8,14 @@ RSpec.describe Api::V1::EncountersController, type: :controller do
 
     it 'shows no encounters if resident has none' do
       log_in_as @resident
-      get :index
+      get :index, format: :json
       expect(response).to have_http_status 200
       expect(json(response)[:encounters].size).to eq 0
     end
 
     it 'shows the categories available to populate angular' do
       log_in_as @resident
-      get :index
+      get :index, format: :json
       expect(json(response)[:encounter_types].size).to eq Encounter::TYPES.size
       expect(json(response)[:encounter_types]).to eq Encounter::TYPES.map(&:to_s)
     end
@@ -25,7 +25,7 @@ RSpec.describe Api::V1::EncountersController, type: :controller do
         @second_resident = create(:resident)
         create(:encounter, user_id: @second_resident.id)
         log_in_as @resident
-        get :index
+        get :index, format: :json
 
         expect(response).to have_http_status 200
         expect(json(response)[:encounters].size).to eq 0
@@ -36,7 +36,7 @@ RSpec.describe Api::V1::EncountersController, type: :controller do
       before(:each) do
         2.times { create(:encounter, user_id: @resident.id) }
         log_in_as @resident
-        get :index
+        get :index, format: :json
       end
 
       it 'should have a 200 status' do
