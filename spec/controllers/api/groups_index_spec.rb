@@ -14,10 +14,16 @@ RSpec.describe Api::V1::GroupsController, type: :controller do
       end
 
       context 'when there are no groups' do
-        it 'should give an empty response' do
+        before(:each) do
           log_in_as @resident
           get :index
+        end
+
+        it 'should return status 200' do
           expect(response).to have_http_status 200
+        end
+
+        it 'should give an empty response' do
           expect(json(response)[:groups]).to be_empty
         end
       end
