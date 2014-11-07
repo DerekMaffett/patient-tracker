@@ -2,7 +2,7 @@
   var app = angular.module('CounterApp');
 
   app.controller('EncountersCtrl',
-    ['$scope', '$http', function($scope, $http) {
+    ['$scope', '$http', '$rootScope', function($scope, $http, $rootScope) {
 
       $scope.displayLabels = [
         "Adult Inpatient", "Adult ED", "Adult ICU", "Adult Inpatient Surgery",
@@ -29,13 +29,22 @@
       };
 
       $scope.index = function() {
-        $http.get('api/v1/groups' + id)
-          .success(function(data) {
-            $scope.members = data['g']
-          })
+        console.log($rootScope.currentUser()['user']['id'])
+
         $http.get('api/v1/encounters')
           .success(function(data) {
             $scope.encounters = data['encounters'];
+          })
+          .error(function(data, status) {
+            $scope.errors.push(data);
+            console.log(data);
+            console.log(status);
+          });
+
+        $http.get('api/v1/groups/' + $rootScope.currentUser()['user']['group_id'])
+          .success(function(data) {
+            $scope.members = data['group']['members'];
+            console.log($scope.members)
           })
           .error(function(data, status) {
             $scope.errors.push(data);
