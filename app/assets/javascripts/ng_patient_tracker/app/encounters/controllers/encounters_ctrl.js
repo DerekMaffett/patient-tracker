@@ -11,7 +11,7 @@
       ];
 
       $scope.encounters = {};
-      $scope.groupUsers = [{id: 1, name: 'Derek Maffett'}];
+      $scope.groupUsers = [{id: 1, name: 'Derek Maffett'}, {id: 2, name: 'Nick Manos'}];
       $scope.totalNewEncounters = 0;
       $scope.newEncounters = {
         encountered_on: new Date(),

@@ -9,10 +9,7 @@
       <div class="header_title">
         {{title}}
          <!-- if current_user  -->
-            <!-- <p>  Logged in as <%= current_user.email %>.</p> -->
-        <!-- else  -->
-            <!-- <p> link_to 'Log in or Sign Up', new_user_session_path, data: {transition: 'flip'}</p> -->
-        <!-- end  -->
+            <p><a href="users/sign_out" data-method="delete" rel="nofollow" data-transition="flip" class="ui-link">Sign Out</a></p>
       </div>
     </div>
   </div>
