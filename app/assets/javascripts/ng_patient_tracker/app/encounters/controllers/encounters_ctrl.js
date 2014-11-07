@@ -29,8 +29,6 @@
       };
 
       $scope.index = function() {
-        console.log($rootScope.currentUser()['user']['id'])
-
         $http.get('api/v1/encounters')
           .success(function(data) {
             $scope.encounters = data['encounters'];
@@ -39,24 +37,28 @@
             $scope.errors.push(data);
             console.log(data);
             console.log(status);
-          });
+        });
 
-        $http.get('api/v1/groups/' + $rootScope.currentUser()['user']['group_id'])
-          .success(function(data) {
-            $scope.members = data['group']['members'];
-            console.log($scope.members)
-          })
-          .error(function(data, status) {
-            $scope.errors.push(data);
-            console.log(data);
-            console.log(status);
-          });
+        if ($rootScope.currentUser()['user']['group_id'] == null) {
+          $scope.members = [$rootScope.currentUser()['user']];
+        } else {
+          $http.get('api/v1/groups/' + $rootScope.currentUser()['user']['group_id'])
+            .success(function(data) {
+              $scope.members = data['group']['members'];
+              console.log($scope.members)
+            })
+            .error(function(data, status) {
+              $scope.errors.push(data);
+              console.log(data);
+              console.log(status);
+            });
+        };
       };
 
       $scope.create = function() {
         $http.post('api/v1/encounters', $scope.newEncounters)
           .success(function(data) {
-            console.dir(data);
+            $scope.setTab('Index');
             data['encounters'].forEach(function(encounter) {
               $scope.encounters.push(encounter);
               $scope.resetEncounters();
