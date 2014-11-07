@@ -6,10 +6,20 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable, :confirmable
 
   has_many :encounters, dependent: :destroy
-  has_many :groups
-
+  belongs_to :group
+  has_many :adminned_groups, class_name: 'Group', foreign_key: 'admin_id'
 
   before_save :set_default_name, :set_default_role
+
+  def join(group)
+    fail 'A user can only join groups' unless group.is_a? Group
+    update(group_id: group.id)
+  end
+
+  def withdraw_from(_group)
+    fail 'A user can only withdraw from groups' unless _group.is_a? Group
+    update(group_id: nil)
+  end
 
   private
     def set_default_name

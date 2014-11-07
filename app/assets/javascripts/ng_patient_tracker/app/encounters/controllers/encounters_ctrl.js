@@ -2,7 +2,7 @@
   var app = angular.module('CounterApp');
 
   app.controller('EncountersCtrl',
-    ['$scope', '$http', function($scope, $http) {
+    ['$scope', '$http', '$rootScope', function($scope, $http, $rootScope) {
 
       $scope.displayLabels = [
         "Adult Inpatient", "Adult ED", "Adult ICU", "Adult Inpatient Surgery",
@@ -11,7 +11,7 @@
       ];
 
       $scope.encounters = {};
-      $scope.groupUsers = [{id: 1, name: 'Nick Manos'}, {id: 2, name: 'Nick Manos'}];
+      $scope.members = {};
       $scope.totalNewEncounters = 0;
       $scope.newEncounters = {
         encountered_on: new Date(),
@@ -29,9 +29,22 @@
       };
 
       $scope.index = function() {
+        console.log($rootScope.currentUser()['user']['id'])
+
         $http.get('api/v1/encounters')
           .success(function(data) {
             $scope.encounters = data['encounters'];
+          })
+          .error(function(data, status) {
+            $scope.errors.push(data);
+            console.log(data);
+            console.log(status);
+          });
+
+        $http.get('api/v1/groups/' + $rootScope.currentUser()['user']['group_id'])
+          .success(function(data) {
+            $scope.members = data['group']['members'];
+            console.log($scope.members)
           })
           .error(function(data, status) {
             $scope.errors.push(data);

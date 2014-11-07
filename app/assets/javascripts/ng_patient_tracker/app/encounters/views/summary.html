@@ -8,12 +8,12 @@
         <th>Total</th>
       </tr>
     </thead>
-
-    <tbody data-ng-repeat="user in groupUsers">
+    {{members}}
+    <tbody data-ng-repeat="member in members">
       <tr data-ng-repeat="label in displayLabels" class="lineitem fullwidth">
-        <td>{{$first ? user.name : ''}}</td>
+        <td>{{$first ? member.name : ''}}</td>
         <td>{{label}}</td>
-        <td>{{((encounters | filter:user.name:true) | filter:(label | serverTypes):true).length}}</td>
+        <td>{{((encounters | filter:member.name:true) | filter:(label | serverTypes):true).length}}</td>
       </tr>
     </tbody>
   </table>

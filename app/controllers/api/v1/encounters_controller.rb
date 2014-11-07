@@ -4,7 +4,7 @@ module Api
       def index
         @encounters = policy_scope(Encounter).includes(:user).order_name_and_time
 
-        @encounters_count = Encounter.group(:user_id, :encounter_type)
+        @encounters_count = policy_scope(Encounter).group(:user_id, :encounter_type)
           .order(:user_id, :encounter_type).count
 
         respond_to do |format|
