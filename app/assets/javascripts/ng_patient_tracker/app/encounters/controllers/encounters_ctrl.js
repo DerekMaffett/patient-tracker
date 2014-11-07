@@ -43,7 +43,11 @@
       $scope.create = function() {
         $http.post('api/v1/encounters', $scope.newEncounters)
           .success(function(data) {
-            $scope.encounters = $scope.encounters + data['encounters'];
+            console.dir(data);
+            data['encounters'].forEach(function(encounter) {
+              $scope.encounters.push(encounter);
+              resetEncounters();
+            });
           })
           .error(function(data, status) {
             $scope.errors.push(data);
