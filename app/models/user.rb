@@ -6,7 +6,7 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable, :confirmable
 
   has_many :encounters, dependent: :destroy
-  has_many :groups
+  belongs_to :group
 
 
   before_save :set_default_name, :set_default_role
