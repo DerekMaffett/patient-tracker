@@ -13,7 +13,7 @@ class EncounterPolicy < ApplicationPolicy
   end
 
   def index?
-    user.id == encounter.user.id || user.role == 'Admin'
+    user.role == 'Resident'
   end
 
   def show?

@@ -21,14 +21,28 @@ RSpec.describe Api::V1::EncountersController, type: :controller do
     end
 
     describe 'when multiple residents are using the app' do
-      it 'should only show encounters for the individual residents' do
+      before(:each) do
         @second_resident = create(:resident)
         create(:encounter, user_id: @second_resident.id)
         log_in_as @resident
+      end
+
+      it 'should default to only show encounters for individual residents' do
         get :index, format: :json
 
         expect(response).to have_http_status 200
         expect(json(response)[:encounters].size).to eq 0
+      end
+
+      it 'should show other residents records if in the same group' do
+        @group = create(:group)
+        @resident.join @group
+        @second_resident.join @group
+
+        get :index, format: :json
+
+        expect(response).to have_http_status 200
+        expect(json(response)[:encounters].size).to eq 1
       end
     end
 

@@ -13,19 +13,19 @@ class GroupPolicy < ApplicationPolicy
   end
 
   def index?
-    @user.id
+    @user.role == 'Resident'
   end
 
   def create?
-    @user.id
+    @user.role == 'Resident'
   end
 
   def join?
-    @user.id
+    @user.role == 'Resident'
   end
 
   def withdraw?
-    @user.id
+    @user.role == 'Resident'
   end
 
   def destroy?
