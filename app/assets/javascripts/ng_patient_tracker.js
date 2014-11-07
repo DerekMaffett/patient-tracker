@@ -35,5 +35,6 @@
     $rootScope.currentUser = function() {
       return $cookieStore.get('currentUser');
     };
+
   }]);
 })();
