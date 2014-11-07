@@ -46,7 +46,7 @@
             console.dir(data);
             data['encounters'].forEach(function(encounter) {
               $scope.encounters.push(encounter);
-              resetEncounters();
+              $scope.resetEncounters();
             });
           })
           .error(function(data, status) {
