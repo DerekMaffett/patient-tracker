@@ -2,8 +2,15 @@ module Api
   module V1
     class EncountersController < Api::BaseController
       def index
-        encounters = policy_scope(Encounter).includes(:user).order_name_and_time
-        render json: encounters, status: 200
+        @encounters = policy_scope(Encounter).includes(:user).order_name_and_time
+
+        @encounters_count = Encounter.group(:user_id, :encounter_type)
+          .order(:user_id, :encounter_type).count
+
+        respond_to do |format|
+          format.json { render json: @encounters, status: 200 }
+          format.xls
+        end
       end
 
       def create

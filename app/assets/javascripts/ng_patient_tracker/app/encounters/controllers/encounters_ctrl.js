@@ -11,6 +11,7 @@
       ];
 
       $scope.encounters = {};
+      $scope.groupUsers = [{id: 1, name: 'Derek Maffett'}, {id: 2, name: 'Nick Manos'}];
       $scope.totalNewEncounters = 0;
       $scope.newEncounters = {
         encountered_on: new Date(),
@@ -61,8 +62,8 @@
         for (var type in $scope.newEncounters['encounter_types']) {
           $scope.newEncounters['encounter_types'][type] = 0;
           $scope.totalNewEncounters = 0;
-        }
-      }
+        };
+      };
 
       $scope.setTab = function(tab) {
         $scope.tab = tab;

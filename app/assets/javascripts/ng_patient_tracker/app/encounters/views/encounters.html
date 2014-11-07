@@ -12,9 +12,10 @@
           <div page-nav></div>
         </div>
       </div>
-      <div data-ng-init="setTab('New')">
+      <div data-ng-init="setTab('Index')">
         <div encounters-index data-ng-show="currentTabIs('Index')"></div>
         <div encounters-new data-ng-show="currentTabIs('New')"></div>
+        <div encounters-summary data-ng-show="currentTabIs('Summary')"></div>
       </div>
     <!-- end -->
 

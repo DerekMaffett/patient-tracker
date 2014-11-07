@@ -1,44 +1,20 @@
-<div data-role="page" id="index" data-url="index" tabindex="0">
+<div class="spacer"></div>
+<div class="wrap_section_narrow">
+  <table id="encounter_encounters_table" class="ui-responsive">
+    <thead>
+      <tr class="fullwidth">
+        <th>Resident</th>
+        <th>Type</th>
+        <th>Total</th>
+      </tr>
+    </thead>
 
-  <% content_for :header_title, 'Summary of Encounter Encounters' %>
-
-
-  <div class="wrap_section_narrow_wc" style="background-color: none">
-    <div class="spacer">
-      <%= render 'layouts/nav' %>
-    </div>
-  </div>
-
-  <div class="wrap_section_narrow">
-    <% if current_user %>
-      <table data-role="table" id="encounter_encounters_table" class="ui-responsive">
-        <thead>
-          <tr class="fullwidth">
-            <th>Resident</th>
-            <th>Type</th>
-            <th>Total</th>
-          </tr>
-        </thead>
-
-        <tbody>
-          <% @encounters_count.each do |group, count| %>
-            <% user = User.find(group[0]) %>
-            <% if user == current_user || policy(current_user).admin? %>
-              <tr class="lineitem fullwidth">
-                <td><%= user.name %></td>
-                <td><%= group[1] %></td>
-                <td><%= count %></td>
-              </tr>
-            <% end %>
-          <% end %>
-        </tbody>
-      </table>
-    <% else %>
-      <div class="spacer">You must <%= link_to 'sign in', new_user_session_path %> to view this page.</div>
-    <% end %>
-  </div>
-
-  <div class="form-block">
-  </div>
-  <%= render 'layouts/footer' %>
+    <tbody data-ng-repeat="user in groupUsers">
+      <tr data-ng-repeat="label in displayLabels" class="lineitem fullwidth">
+        <td>{{$first ? user.name : ''}}</td>
+        <td>{{label}}</td>
+        <td>{{((encounters | filter:user.name:true) | filter:(label | serverTypes):true).length}}</td>
+      </tr>
+    </tbody>
+  </table>
 </div>

@@ -1,0 +1,115 @@
+<?xml version="1.0"?>
+<Workbook xmlns="urn:schemas-microsoft-com:office:spreadsheet"
+  xmlns:o="urn:schemas-microsoft-com:office:office"
+  xmlns:x="urn:schemas-microsoft-com:office:excel"
+  xmlns:ss="urn:schemas-microsoft-com:office:spreadsheet"
+  xmlns:html="http://www.w3.org/TR/REC-html40">
+  <OfficeDocumentSettings xmlns="urn:schemas-microsoft-com:office:office">
+    <AllowPNG/>
+  </OfficeDocumentSettings>
+  <ExcelWorkbook xmlns="urn:schemas-microsoft-com:office:excel">
+    <WindowHeight>11720</WindowHeight>
+    <WindowWidth>25600</WindowWidth>
+    <WindowTopX>0</WindowTopX>
+    <WindowTopY>0</WindowTopY>
+    <ProtectStructure>False</ProtectStructure>
+    <ProtectWindows>False</ProtectWindows>
+  </ExcelWorkbook>
+  <Styles>
+    <Style ss:ID="Default" ss:Name="Normal">
+      <Alignment ss:Vertical="Bottom"/>
+      <Borders/>
+      <Font ss:FontName="Calibri" x:Family="Swiss" ss:Size="12" ss:Color="#000000"/>
+      <Interior/>
+      <NumberFormat/>
+      <Protection/>
+    </Style>
+    <Style ss:ID="s63">
+      <Alignment ss:Horizontal="Center" ss:Vertical="Center" ss:WrapText="1"/>
+      <Font ss:FontName="Calibri" ss:Color="#000000" ss:Bold="1"/>
+    </Style>
+    <Style ss:ID="s65">
+      <Alignment ss:Vertical="Bottom" ss:WrapText="1"/>
+      <Font ss:FontName="Calibri" ss:Color="#000000"/>
+    </Style>
+    <Style ss:ID="s68">
+      <Alignment ss:Vertical="Bottom" ss:WrapText="1"/>
+      <Font ss:FontName="Calibri" ss:Color="#000000"/>
+      <NumberFormat ss:Format="Short Date"/>
+    </Style>
+  </Styles>
+  <Worksheet ss:Name="Encounters">
+    <Table ss:ExpandedColumnCount="4" x:FullColumns="1"
+    x:FullRows="1" ss:DefaultColumnWidth="65" ss:DefaultRowHeight="15">
+      <Column ss:Width="56"/>
+      <Column ss:Width="98"/>
+      <Column ss:Width="61"/>
+      <Column ss:Width="52"/>
+      <Row>
+        <Cell ss:StyleID="s63"><Data ss:Type="String">Resident</Data></Cell>
+        <Cell ss:StyleID="s63"><Data ss:Type="String">Type</Data></Cell>
+        <Cell ss:StyleID="s63"><Data ss:Type="String">Encountered</Data></Cell>
+        <Cell ss:StyleID="s63"><Data ss:Type="String">Submitted</Data></Cell>
+      </Row>
+      <% @encounters.each do |encounter| %>
+        <% if policy(encounter).index? %>
+          <Row>
+            <Cell ss:StyleID="s65">
+              <Data ss:Type="String"><%= encounter.user.present? ? encounter.user.name : "Unknown" %></Data>
+             </Cell>
+            <Cell ss:StyleID="s65">
+              <Data ss:Type="String"><%= encounter.encounter_type %></Data>
+            </Cell>
+            <Cell ss:StyleID="s68">
+              <Data ss:Type="DateTime"><%= encounter.encountered_on %></Data>
+            </Cell>
+            <Cell ss:StyleID="s68">
+              <Data ss:Type="DateTime"><%= encounter.created_at.to_date %></Data>
+            </Cell>
+          </Row>
+        <% end %>
+      <% end %>
+    </Table>
+    <WorksheetOptions xmlns="urn:schemas-microsoft-com:office:excel">
+      <PageLayoutZoom>0</PageLayoutZoom>
+      <Selected/>
+      <DoNotDisplayGridlines/>
+      <ProtectObjects>False</ProtectObjects>
+      <ProtectScenarios>False</ProtectScenarios>
+    </WorksheetOptions>
+  </Worksheet>
+  <Worksheet ss:Name="Summary">
+    <Table ss:ExpandedColumnCount="3" x:FullColumns="1"
+    x:FullRows="1" ss:DefaultColumnWidth="65" ss:DefaultRowHeight="15">
+      <Column ss:Width="56"/>
+      <Column ss:Width="98"/>
+      <Column ss:Width="61"/>
+      <Row>
+        <Cell ss:StyleID="s63"><Data ss:Type="String">Resident</Data></Cell>
+        <Cell ss:StyleID="s63"><Data ss:Type="String">Type</Data></Cell>
+        <Cell ss:StyleID="s63"><Data ss:Type="String">Total</Data></Cell>
+      </Row>
+      <% @encounters_count.each do |group, count| %>
+        <% user = User.find(group[0]) %>
+          <Row>
+            <Cell ss:StyleID="s65">
+              <Data ss:Type="String"><%= user.name %></Data>
+             </Cell>
+            <Cell ss:StyleID="s65">
+              <Data ss:Type="String"><%= group[1] %></Data>
+            </Cell>
+            <Cell ss:StyleID="s65">
+              <Data ss:Type="Number"><%= count %></Data>
+            </Cell>
+          </Row>
+      <% end %>
+    </Table>
+    <WorksheetOptions xmlns="urn:schemas-microsoft-com:office:excel">
+      <PageLayoutZoom>0</PageLayoutZoom>
+      <Selected/>
+      <DoNotDisplayGridlines/>
+      <ProtectObjects>False</ProtectObjects>
+      <ProtectScenarios>False</ProtectScenarios>
+    </WorksheetOptions>
+  </Worksheet>
+</Workbook>
