@@ -7,7 +7,7 @@ class User < ActiveRecord::Base
 
   has_many :encounters, dependent: :destroy
   belongs_to :group
-  has_many :admined_groups, class_name: 'Group'
+  has_many :adminned_groups, class_name: 'Group', foreign_key: 'admin_id'
 
   before_save :set_default_name, :set_default_role
 

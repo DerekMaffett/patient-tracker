@@ -50,6 +50,11 @@ RSpec.describe Api::V1::GroupsController, type: :controller do
         it 'should return the new group' do
           expect(json(response)[:group][:name]).to eq 'Surgeons United'
         end
+
+        it 'should assign the current user as admin' do
+          expect(@resident.adminned_groups).to include Group.first
+          expect(Group.first.admin).to eq @resident
+        end
       end
     end
   end

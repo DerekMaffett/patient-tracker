@@ -9,6 +9,7 @@ module Api
 
       def create
         group = Group.new(group_params)
+        group.admin = current_user
         authorize group
         if group.save
           render json: group, status: 201
