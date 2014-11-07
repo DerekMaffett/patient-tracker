@@ -48,6 +48,8 @@ RSpec.describe Api::V1::GroupsController, type: :controller do
 
     context 'the admin user is signed in' do
       before(:each) do
+        @member = create(:resident)
+        @member.join @group
         @group.set_admin @resident
         log_in_as @resident
         delete :destroy, id: @group
@@ -59,6 +61,10 @@ RSpec.describe Api::V1::GroupsController, type: :controller do
 
       it 'should delete the group' do
         expect(Group.count).to eq 0
+      end
+
+      skip 'should remove foreign keys from members' do
+        expect(@member.group_id).to be_nil
       end
     end
   end
