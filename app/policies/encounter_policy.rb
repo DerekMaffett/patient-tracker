@@ -8,7 +8,7 @@ class EncounterPolicy < ApplicationPolicy
   end
 
   def index?
-    user.role == 'Resident'
+    @user.role == 'Resident'
   end
 
   def show?
@@ -20,7 +20,7 @@ class EncounterPolicy < ApplicationPolicy
   end
 
   def create?
-    user.role == 'Resident'
+    @user.role == 'Resident'
   end
 
   def edit?
@@ -28,16 +28,20 @@ class EncounterPolicy < ApplicationPolicy
   end
 
   def update?
-    user.role == 'Resident' && user.id == encounter.user.id
+    @user.role == 'Resident' && @user.id == encounter.user.id
   end
 
   def destroy?
-    user.id == encounter.user.id
+    @user.id == encounter.user.id
   end
 
   class Scope < Struct.new(:user, :scope)
     def resolve
-      scope.where(user_id: user.id)
+      if user.try(:group)
+        scope.where(user_id: user.group.members.pluck(:id))
+      else
+        scope.where(user_id: user.id)
+      end
     end
   end
 end
