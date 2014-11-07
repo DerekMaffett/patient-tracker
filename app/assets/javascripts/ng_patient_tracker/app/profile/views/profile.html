@@ -13,18 +13,7 @@
       </div>
       <div class="wrap_section_narrow" data-ng-controller="GroupsCtrl" data-ng-init="index()">
         <div data-ng-repeat="group in groups">
-          <table>
-            <tbody>
-              <tr class="fullwidth">
-                <td>
-                  <h3>{{group.name}}</h3>
-                </td>
-                <td>
-                  <input type="submit" class="signUpBtnMid blockFloatRight" value="Join">
-                </td>
-              </tr>
-            </tbody>
-          </table>
+          <div group-table></div>
         </div>
       </div>
     <!-- end -->

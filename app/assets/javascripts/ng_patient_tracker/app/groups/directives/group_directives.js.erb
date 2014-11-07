@@ -1,0 +1,10 @@
+(function() {
+  var app = angular.module('GroupDirectives', []);
+
+  app.directive('groupTable', function() {
+    return {
+      restrict: 'A',
+      templateUrl: '<%= asset_path("ng_patient_tracker/app/groups/views/table.html") %>'
+    };
+  });
+})();
