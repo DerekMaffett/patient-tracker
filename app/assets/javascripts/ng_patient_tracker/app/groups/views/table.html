@@ -4,7 +4,6 @@
       <td>
         <h3>{{group.name}}</h3>
       </td>
-      <td data-ng-show="memberOf(group)">You've joined!</td>
       <td>
         <input type="submit" class="resetBtnMid blockFloatRight" value="Leave" data-ng-click="withdraw(group.id, $index)" data-ng-show="currentUser()['user']['group_id'] == group.id">
       </td>
