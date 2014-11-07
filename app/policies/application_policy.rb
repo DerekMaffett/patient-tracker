@@ -1,8 +1,14 @@
 class ApplicationPolicy
+  class NullUser
+    def method_missing(method)
+      false
+    end
+  end
+
   attr_reader :user, :record
 
   def initialize(user, record)
-    @user = user
+    @user = user || NullUser.new
     @record = record
   end
 

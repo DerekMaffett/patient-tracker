@@ -1,9 +1,4 @@
 class GroupPolicy < ApplicationPolicy
-  class NullUser
-    def method_missing(method)
-      false
-    end
-  end
 
   attr_reader :user, :group
 
