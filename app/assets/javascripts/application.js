@@ -17,7 +17,6 @@
 //= require angular/angular.min
 //= require angular-cookies/angular-cookies.min
 //= require angular-route/angular-route.min
-//= require encounters
 //= require sign_up
 //= require ng_patient_tracker
 
