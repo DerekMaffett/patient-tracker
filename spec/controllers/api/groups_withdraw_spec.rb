@@ -32,8 +32,8 @@ RSpec.describe Api::V1::GroupsController, type: :controller do
         expect(@resident.reload.group).to be_nil
       end
 
-      it 'should return the new group' do
-        expect(json(response)[:group][:members]).to be_empty
+      it 'should return the new set of groups' do
+        expect(json(response)[:groups][0][:members]).to be_empty
       end
     end
   end

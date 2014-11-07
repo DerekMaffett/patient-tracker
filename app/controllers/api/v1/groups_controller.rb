@@ -22,7 +22,7 @@ module Api
         group = Group.find(params[:id])
         authorize group
         if current_user.join group
-          render json: group, status: 200
+          render json: Group.all, status: 200
         else
           render json: group.errors, status: 422
         end
@@ -32,7 +32,7 @@ module Api
         group = Group.find(params[:id])
         authorize group
         if current_user.withdraw_from group
-          render json: group, status: 200
+          render json: Group.all, status: 200
         else
           render json: group.errors, status: 422
         end
