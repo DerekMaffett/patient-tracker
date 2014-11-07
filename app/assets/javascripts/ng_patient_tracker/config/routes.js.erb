@@ -7,6 +7,10 @@
         controller: 'EncountersCtrl',
         templateUrl: '<%= asset_path("ng_patient_tracker/app/encounters/views/encounters.html") %>'
       })
+      .when('/groups', {
+        controller: 'GroupsCtrl',
+        templateUrl: '<%= asset_path("ng_patient_tracker/app/groups/views/groups.html") %>'
+      })
       .otherwise({
         redirectTo: '/encounters'
       });
