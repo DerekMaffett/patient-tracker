@@ -7,7 +7,7 @@ class User < ActiveRecord::Base
 
   has_many :encounters, dependent: :destroy
   has_many :groups
-  has_many :admins, through: :groups
+
 
   before_save :set_default_name, :set_default_role
 
