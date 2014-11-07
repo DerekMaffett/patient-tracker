@@ -7,6 +7,12 @@ module Api
         render json: groups, status: 200
       end
 
+      def show
+        group = Group.find(params[:id])
+        authorize group
+        render json: group, status: 200
+      end
+
       def create
         group = Group.new(group_params)
         group.admin = current_user

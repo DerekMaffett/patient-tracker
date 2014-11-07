@@ -11,6 +11,10 @@ class GroupPolicy < ApplicationPolicy
     @user.role == 'Resident'
   end
 
+  def show?
+    @user.role == 'Resident'
+  end
+
   def create?
     @user.role == 'Resident'
   end
