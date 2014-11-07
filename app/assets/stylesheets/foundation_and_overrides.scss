@@ -1445,6 +1445,12 @@ $include-html-global-classes: $include-html-classes;
     height: 100px;
     width: 100px;
     float: right;
- }
+    margin-right: 28px;
+  }
+
+  #user_name{
+    float:right;
+    font-size: 34px;
+  }
 
 @import 'foundation';
