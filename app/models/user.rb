@@ -16,8 +16,8 @@ class User < ActiveRecord::Base
     update(group_id: group.id)
   end
 
-  def withdraw_from(group)
-    fail 'A user can only withdraw from groups' unless group.is_a? Group
+  def withdraw_from(_group)
+    fail 'A user can only withdraw from groups' unless _group.is_a? Group
     update(group_id: nil)
   end
 
