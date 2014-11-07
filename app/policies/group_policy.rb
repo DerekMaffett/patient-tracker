@@ -24,6 +24,10 @@ class GroupPolicy < ApplicationPolicy
     @user.id
   end
 
+  def withdraw?
+    @user.id
+  end
+
   def destroy?
     @user == @group.admin
   end

@@ -11,6 +11,7 @@ Rails.application.routes.draw do
       resources :groups, only: [:index, :create, :destroy] do
         member do
           post :join
+          post :withdraw
         end
       end
     end

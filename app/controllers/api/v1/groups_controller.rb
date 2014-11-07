@@ -28,6 +28,16 @@ module Api
         end
       end
 
+      def withdraw
+        group = Group.find(params[:id])
+        authorize group
+        if current_user.withdraw_from group
+          render json: group, status: 200
+        else
+          render json: group.errors, status: 422
+        end
+      end
+
       def destroy
         group = Group.find(params[:id])
         authorize group
