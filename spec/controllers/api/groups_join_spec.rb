@@ -8,9 +8,9 @@ RSpec.describe Api::V1::GroupsController, type: :controller do
     end
 
     context 'when a non-signed-in user tries to join a group' do
-      # it 'should return a not authorized error' do
-      #   expect { post :join, id: @group }.to raise_error Pundit::NotAuthorizedError
-      # end
+      it 'should return a not authorized error' do
+        expect { post :join, id: @group }.to raise_error Pundit::NotAuthorizedError
+      end
     end
 
     context 'when a signed-in resident tries to join a group' do
