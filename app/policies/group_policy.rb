@@ -16,6 +16,10 @@ class GroupPolicy < ApplicationPolicy
     user.id
   end
 
+  def create?
+    user.id
+  end
+
   class Scope < Struct.new(:user, :scope)
     def resolve
       scope
