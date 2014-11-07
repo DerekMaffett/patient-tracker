@@ -43,6 +43,24 @@ RSpec.describe Api::V1::GroupsController, type: :controller do
           end
         end
       end
+
+      context 'when there are groups with associated users' do
+        before(:each) do
+          @group = create(:group)
+          @resident.join @group
+          log_in_as @resident
+          get :index
+        end
+
+        it 'returns status 200' do
+          expect(response).to have_http_status 200
+        end
+
+        it 'returns the users associated with the group' do
+          expect(json(response)[:groups][0][:users][0][:name])
+            .to eq @resident.name
+        end
+      end
     end
   end
 end

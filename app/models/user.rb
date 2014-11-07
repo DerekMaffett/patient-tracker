@@ -10,6 +10,11 @@ class User < ActiveRecord::Base
 
   before_save :set_default_name, :set_default_role
 
+  def join(group)
+    fail 'A user can only join groups' unless group.is_a? Group
+    update(group_id: group.id)
+  end
+
   private
     def set_default_name
       self.name = first_name + ' ' + last_name
