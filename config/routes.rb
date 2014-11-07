@@ -8,7 +8,11 @@ Rails.application.routes.draw do
       resources :encounters,
         only: [:index, :create, :destroy],
         defaults: { format: 'json' }
-      resources :groups, only: [:index, :create, :destroy]
+      resources :groups, only: [:index, :create, :destroy] do
+        member do
+          post :join
+        end
+      end
     end
   end
 

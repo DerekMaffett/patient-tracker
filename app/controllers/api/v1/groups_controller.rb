@@ -18,6 +18,16 @@ module Api
         end
       end
 
+      def join
+        group = Group.find(params[:id])
+        authorize group
+        if current_user.join group
+          render json: group, status: 200
+        else
+          render json: group.errors, status: 422
+        end
+      end
+
       def destroy
         group = Group.find(params[:id])
         authorize group

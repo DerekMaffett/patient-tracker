@@ -20,6 +20,10 @@ class GroupPolicy < ApplicationPolicy
     @user.id
   end
 
+  def join?
+    @user.id
+  end
+
   def destroy?
     @user == @group.admin
   end
