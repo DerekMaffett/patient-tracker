@@ -33,6 +33,7 @@
       $http.post('api/v1/groups/' + id + '/withdraw')
         .success(function(data) {
           $scope.groups = data['groups'];
+          $rootScope.setCurrentUserGroup(null);
         })
         .error(function(data, status) {
           $scope.errors.push(data);
