@@ -8,12 +8,11 @@
         <th>Total</th>
       </tr>
     </thead>
-    {{members}}
     <tbody data-ng-repeat="member in members">
       <tr data-ng-repeat="label in displayLabels" class="lineitem fullwidth">
         <td>{{$first ? member.name : ''}}</td>
         <td>{{label}}</td>
-        <td>{{((encounters | filter:member.name:true) | filter:(label | serverTypes):true).length}}</td>
+        <td>{{((encounters | filter:member.name:true) | serverTypes:label).length}}</td>
       </tr>
     </tbody>
   </table>
