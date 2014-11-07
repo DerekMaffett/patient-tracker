@@ -45,5 +45,21 @@ RSpec.describe Api::V1::GroupsController, type: :controller do
         expect(Group.count).to eq 1
       end
     end
+
+    context 'the admin user is signed in' do
+      before(:each) do
+        @group.set_admin @resident
+        log_in_as @resident
+        delete :destroy, id: @group
+      end
+
+      it 'should return status 204' do
+        expect(response).to have_http_status 204
+      end
+
+      it 'should delete the group' do
+        expect(Group.count).to eq 0
+      end
+    end
   end
 end

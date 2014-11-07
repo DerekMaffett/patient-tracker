@@ -20,7 +20,7 @@ module Api
       def destroy
         group = Group.find(params[:id])
         authorize group
-        destroy group
+        group.destroy
         render nothing: true, status: 204
       end
 
