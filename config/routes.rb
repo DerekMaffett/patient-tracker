@@ -12,8 +12,6 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :groups
-
   resources :charges, only: [:new, :create]
 
   root 'angular#index'
