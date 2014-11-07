@@ -9,7 +9,9 @@
       <div class="header_title">
         {{title}}
         <span id='user_name'>{{$root.currentUser()['user']['name']}}</span>
+      <div>
       <img id='avatar' alt="Avatar" src="/assets/bear_avatar.jpg" data-ng-click="getLocation() == '/profile' ? redirectToEncounters() : redirectToProfile()">
+      </div>
          <!-- if current_user  -->
             <p><a href="users/sign_out" data-method="delete" rel="nofollow" data-transition="flip" class="ui-link">Sign Out</a>
             </p>
