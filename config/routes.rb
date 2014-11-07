@@ -8,6 +8,7 @@ Rails.application.routes.draw do
       resources :encounters,
         only: [:index, :create, :destroy],
         defaults: { format: 'json' }
+      resources :groups, only: [:index, :create, :destroy]
     end
   end
 

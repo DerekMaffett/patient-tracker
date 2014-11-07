@@ -8,7 +8,6 @@ class User < ActiveRecord::Base
   has_many :encounters, dependent: :destroy
   belongs_to :group
 
-
   before_save :set_default_name, :set_default_role
 
   private

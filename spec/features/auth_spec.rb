@@ -5,7 +5,7 @@ describe 'Authentication' do
     @resident = create(:resident)
   end
 
-  it 'registered users can sign in' do
+  skip 'registered users can sign in' do
     log_in_as @resident
     expect(page).to have_content('Signed in successfully')
   end
