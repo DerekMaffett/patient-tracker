@@ -32,7 +32,6 @@ RSpec.describe Api::V1::GroupsController, type: :controller do
       end
 
       it 'should return the new group membership' do
-        p json(response)
         expect(json(response)[:group][:members][0][:name]).to eq @resident.name
       end
     end
