@@ -13,11 +13,15 @@ class GroupPolicy < ApplicationPolicy
   end
 
   def index?
-    user.id
+    @user.id
   end
 
   def create?
-    user.id
+    @user.id
+  end
+
+  def destroy?
+    @user == @group.admin
   end
 
   class Scope < Struct.new(:user, :scope)

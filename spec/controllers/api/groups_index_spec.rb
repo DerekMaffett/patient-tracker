@@ -57,7 +57,7 @@ RSpec.describe Api::V1::GroupsController, type: :controller do
         end
 
         it 'returns the users associated with the group' do
-          expect(json(response)[:groups][0][:users][0][:name])
+          expect(json(response)[:groups][0][:members][0][:name])
             .to eq @resident.name
         end
       end

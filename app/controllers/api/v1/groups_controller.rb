@@ -17,6 +17,13 @@ module Api
         end
       end
 
+      def destroy
+        group = Group.find(params[:id])
+        authorize group
+        destroy group
+        render nothing: true, status: 204
+      end
+
       private
 
       def group_params
