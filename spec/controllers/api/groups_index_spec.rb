@@ -71,6 +71,10 @@ RSpec.describe Api::V1::GroupsController, type: :controller do
         it 'returns the admin of the group' do
           expect(json(response)[:groups][0][:admin][:name]).to eq @admin.name
         end
+
+        it 'returns users along with their own group ids' do
+          expect(json(response)[:groups][0][:members][0][:group_id])
+        end
       end
     end
   end

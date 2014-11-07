@@ -1,7 +1,7 @@
 (function() {
   var app = angular.module('CounterApp');
 
-  app.controller('GroupsCtrl', ['$scope', '$http', function($scope, $http) {
+  app.controller('GroupsCtrl', ['$scope', '$http', '$rootScope', function($scope, $http, $rootScope) {
     $scope.groups = {};
 
     $scope.index = function() {
@@ -20,6 +20,7 @@
       $http.post('api/v1/groups/' + id + '/join')
         .success(function(data) {
           $scope.groups = data['groups'];
+          $rootScope.setCurrentUserGroup(id);
         })
         .error(function(data, status) {
           $scope.errors.push(data);

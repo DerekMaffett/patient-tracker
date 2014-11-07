@@ -26,6 +26,12 @@
         });
     };
 
+    $rootScope.setCurrentUserGroup = function(groupId) {
+      var data = $cookieStore.get('currentUser');
+      data['user']['group_id'] = groupId;
+      $cookieStore.put('currentUser', data);
+    }
+
     $rootScope.currentUser = function() {
       return $cookieStore.get('currentUser');
     };
