@@ -2,6 +2,7 @@
   var app = angular.module('CounterApp');
 
   app.controller('HeaderCtrl', [ '$scope', '$location', function($scope, $location) {
+
     $scope.getLocation = function() {
       return $location.path();
     };

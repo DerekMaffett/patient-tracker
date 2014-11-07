@@ -19,6 +19,11 @@ Rails.application.routes.draw do
 
   resources :charges, only: [:new, :create]
 
+  # THIS IS A TEMPORARY CHEAT. Integrate Devise into Angular to access the
+  # current user that way.
+
+  get 'angular/get_current_user' => 'angular#get_current_user'
+
   root 'angular#index'
 
 end

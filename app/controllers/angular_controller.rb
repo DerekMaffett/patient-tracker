@@ -4,4 +4,8 @@ class AngularController < ApplicationController
   def index
 
   end
+
+  def get_current_user
+    render json: current_user, status: 200
+  end
 end
