@@ -2,18 +2,28 @@
 <div class="wrap_section_narrow">
   <table id="encounter_encounters_table" >
     <thead>
-      <tr class="fullwidth">
-        <th>Resident</th>
-        <th>Type</th>
-        <th>Encountered</th>
-        <th>Submitted</th>
+      <tr class="fullwidth" >
+        <th>
+          <a href="" ng-click="reverse = predicate == 'user.name' && !reverse; predicate = 'user.name'">Resident</a>
+          </a>
+        </th>
+        <th>
+          <a href="" ng-click="reverse = predicate == 'encounter_type' && !reverse; predicate = 'encounter_type'">Type</a>
+        </a>
+        </th>
+        <th>
+          <a href="" ng-click="reverse = predicate == 'encountered_on' && !reverse; predicate = 'encountered_on'">Encountered</a>
+        </th>
+        <th>
+          <a href="" ng-click="reverse = predicate == 'submitted_on' && !reverse; predicate = 'submitted_on'">Encountered</a>
+        </th>
       </tr>
     </thead>
 
-    <tbody data-ng-repeat="encounter in encounters">
+    <tbody data-ng-repeat="encounter in encounters | orderBy:predicate:reverse">
       <tr class="lineitem_index fullwidth">
         <td>{{encounter.user.name}}</th>
-        <td><a href="">{{encounter.encounter_type}}</a></td>
+        <td>{{encounter.encounter_type}}</td>
         <td>{{encounter.encountered_on}}</td>
         <td>{{encounter.submitted_on| date : 'short'}}</td>
       </tr>

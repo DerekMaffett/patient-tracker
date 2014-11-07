@@ -11,7 +11,7 @@
       ];
 
       $scope.encounters = {};
-      $scope.groupUsers = [{id: 1, name: 'Derek Maffett'}, {id: 2, name: 'Nick Manos'}];
+      $scope.groupUsers = [{id: 1, name: 'Nick Manos'}, {id: 2, name: 'Nick Manos'}];
       $scope.totalNewEncounters = 0;
       $scope.newEncounters = {
         encountered_on: new Date(),
@@ -80,5 +80,6 @@
       $scope.to_param = function(label) {
         return label.toLowerCase().replace(/ /g, '_');
       };
+
   }]);
 })();
